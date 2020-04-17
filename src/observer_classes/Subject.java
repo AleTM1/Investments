@@ -1,7 +1,7 @@
 package observer_classes;
 
 public abstract class Subject {
-    private Observer observer;
+    protected Observer observer;
 
     public void addObserver(Observer o){
         observer = o;

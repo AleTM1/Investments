@@ -1,5 +1,5 @@
 package observer_classes;
 
-interface Observer {
+public interface Observer {
     void update();
 }
