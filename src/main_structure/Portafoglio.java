@@ -8,11 +8,16 @@ public class Portafoglio extends Titolo {
     private MonitorRendimenti monitorRendimenti;
     private int currentTick = 0;
     private AzioneBuilder builder;
+    private boolean root = false;
     private double initialValue = value;
 
     public Portafoglio(){
         monitorRendimenti = new MonitorRendimenti(arrayTitoli);
         builder = new AzioneBuilder(monitorRendimenti);
+    }
+
+    public void setRoot() {
+        this.root = true;
     }
 
     public void addTitolo(Titolo t){
@@ -42,7 +47,9 @@ public class Portafoglio extends Titolo {
         value = actValue;
         System.out.println("Valore del portafoglio: " + value);
 
-        _notify(this, variation);
+        if (!root) {
+            _notify(this, variation);
+        }
 
         currentTick++;
         System.out.println("Current tick" + currentTick);
