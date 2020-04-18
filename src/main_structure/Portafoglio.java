@@ -52,15 +52,13 @@ public class Portafoglio extends Titolo {
         currentTick++;
         System.out.println("Current tick" + currentTick);
 
-        if(currentTick == interval){
+        if(currentTick % interval == 0){
             System.out.println("Controllo rendimento");
             if(value < initialValue) {
                 lossAnalisys();
             }
             monitorRendimenti.resetAllVariations();
-            currentTick = 0;
         }
-
     }
 
     private void lossAnalisys(){
