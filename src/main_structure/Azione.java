@@ -29,6 +29,6 @@ public class Azione extends Titolo {
         double newvalue = (variationPer/100 + 1) * value;
         variation = newvalue - value;
         value = newvalue;
-        _notify(this, variation);
+        _notify(this);
     }
 }

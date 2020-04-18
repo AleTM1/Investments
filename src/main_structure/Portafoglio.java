@@ -46,7 +46,7 @@ public class Portafoglio extends Titolo {
         System.out.println("Valore del portafoglio: " + value);
 
         if (!root) {
-            _notify(this, variation);
+            _notify(this);
         }
 
         currentTick++;

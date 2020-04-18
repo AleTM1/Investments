@@ -7,7 +7,7 @@ public abstract class Subject {
         observer = o;
     }
 
-    protected void _notify(Object o, double v){
-        observer.update(o, v);
+    protected void _notify(Object o){
+        observer.update(o);
     }
 }
