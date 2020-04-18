@@ -8,21 +8,21 @@ public class MonitorRendimenti implements Observer {
     private ArrayList<Titolo> arrayTitoli;
     private ArrayList<Double> variations = new ArrayList<>();
 
-    public MonitorRendimenti(ArrayList<Titolo> array){
+    MonitorRendimenti(ArrayList<Titolo> array){
         arrayTitoli = array;
     }
 
-    public void extendVariationsArray(){
+    void extendVariationsArray(){
         variations.add(0.0);
     }
 
-    void resetVariations(int n){
-        if(n < 0) {
-            for (Double v : variations) {
-                v = 0.0;
-            }
-        }else{
-            variations.set(n, 0.0);
+    void resetVariation(int n){
+        variations.set(n, 0.0);
+    }
+
+    void resetAllVariations(){
+        for (Double v : variations) {
+            v = 0.0;
         }
     }
 
@@ -38,7 +38,7 @@ public class MonitorRendimenti implements Observer {
         }
     }
 
-    public Titolo requestAnalisys(){
+    Titolo requestAnalisys(){
         double min = variations.get(0);
         int i = 0;
         for(Double v : variations){

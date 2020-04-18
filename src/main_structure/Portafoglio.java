@@ -11,9 +11,10 @@ public class Portafoglio extends Titolo {
     private boolean root = false;
     private double initialValue = value;
 
-    public Portafoglio(){
+    public Portafoglio(double risk){
         monitorRendimenti = new MonitorRendimenti(arrayTitoli);
         builder = new AzioneBuilder(monitorRendimenti);
+        builder.setRangePer(risk);
     }
 
     public void setRoot() {
@@ -28,12 +29,9 @@ public class Portafoglio extends Titolo {
         initialValue = value;
     }
 
-    public Azione generateAzione(){
-        builder.setStartingValue(1000);
-        builder.setRangePer(5);
-        Azione azione = builder.getResult();
-        value = value + azione.getValue();
-        return azione;
+    public Azione generateAzione(double initValue){
+        builder.setStartingValue(initValue);
+        return builder.getResult();
     }
 
     @Override
@@ -59,8 +57,7 @@ public class Portafoglio extends Titolo {
             if(value < initialValue) {
                 lossAnalisys();
             }
-            System.out.println("Nuovo valore" + value);
-            monitorRendimenti.resetVariations(-1);
+            monitorRendimenti.resetAllVariations();
             currentTick = 0;
         }
 
@@ -70,10 +67,9 @@ public class Portafoglio extends Titolo {
         Titolo titoloPeggiore = monitorRendimenti.requestAnalisys();
         if (titoloPeggiore instanceof Azione) {
             System.out.println("Perdita azionaria!!!");
-            value = value - titoloPeggiore.getValue();
             int index = arrayTitoli.indexOf(titoloPeggiore);
-            arrayTitoli.set(index, generateAzione());
-            monitorRendimenti.resetVariations(index);
+            arrayTitoli.set(index, generateAzione(titoloPeggiore.getValue()));
+            monitorRendimenti.resetVariation(index);
             initialValue = value;
         }else{
             System.out.println("Perdita di portafoglio!!!");
