@@ -12,6 +12,10 @@ public class MonitorRendimenti implements Observer {
         arrayTitoli = array;
     }
 
+    public void extendVariationsArray(){
+        variations.add(0.0);
+    }
+
     public void resetVariations(){
         for(Double v : variations){
             v = 0.0;
@@ -32,9 +36,13 @@ public class MonitorRendimenti implements Observer {
 
     public Titolo requestAnalisys(){
         double min = variations.get(0);
+        int i = 0;
         for(Double v : variations){
+            System.out.println("Azione n: " + i + " varazione: " + v);
             min = min > v ? v : min;
+            i++;
         }
+        System.out.println("Min: " + min);
         int index = variations.indexOf(min);
         return arrayTitoli.get(index);
     }

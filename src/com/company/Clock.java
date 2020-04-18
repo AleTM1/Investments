@@ -2,6 +2,8 @@ package com.company;
 
 import main_structure.Titolo;
 
+import java.util.concurrent.TimeUnit;
+
 class Clock {
     private int maxTick;
     private static Clock self = null;
@@ -19,9 +21,9 @@ class Clock {
     void run(Titolo titolo){
         for(int i = 0; i < maxTick; i++){
             try {
-                Thread.sleep(1000);
+                TimeUnit.SECONDS.sleep(1);
                 titolo.updateValue();
-            }catch(Exception e){
+            }catch(InterruptedException e){
                 System.out.println("Qualcosa è andato storto nel Clock");
             }
         }

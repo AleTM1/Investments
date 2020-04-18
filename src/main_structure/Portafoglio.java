@@ -15,11 +15,21 @@ public class Portafoglio extends Titolo {
 
     public void addTitolo(Titolo t){
         arrayTitoli.add(t);
+        monitorRendimenti.extendVariationsArray();
         t.addObserver(monitorRendimenti);
+        value += t.getValue();
+        initialValue = value;
     }
 
     private Azione regenerateAzione(){
-        return new Azione();
+        System.out.println("Azione rigenerata");
+        Azione azione = new Azione();
+        azione.generateMaxDecPer();
+        azione.generateMaxIncPer();
+        azione.setValue(1000);
+        azione.addObserver(monitorRendimenti);
+        value = value + azione.getValue();
+        return azione;
     }
 
     @Override
@@ -31,17 +41,26 @@ public class Portafoglio extends Titolo {
         }
         variation = actValue - value;
         value = actValue;
+        System.out.println("Valore del portafoglio: " + value);
+
         _notify(this, variation);
 
         currentTick++;
+        System.out.println("Current tick" + currentTick);
 
         if(currentTick == interval){
+            System.out.println("Controllo rendimento");
             if(value < initialValue) {
+                System.out.println("Perdita!!!");
                 Titolo titoloPeggiore = monitorRendimenti.requestAnalisys();
+                value = value - titoloPeggiore.getValue();
                 int index = arrayTitoli.indexOf(titoloPeggiore);
                 arrayTitoli.set(index, regenerateAzione());
+                initialValue = value;
             }
+            System.out.println("Nuovo valore" + value);
             monitorRendimenti.resetVariations();
+            currentTick = 0;
         }
 
     }
