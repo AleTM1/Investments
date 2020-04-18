@@ -3,14 +3,16 @@ package main_structure;
 import java.util.ArrayList;
 
 public class Portafoglio extends Titolo {
-    private static int interval = 3;
+    private final int interval = 3;
     private ArrayList<Titolo> arrayTitoli = new ArrayList<>();
     private MonitorRendimenti monitorRendimenti;
     private int currentTick = 0;
+    private AzioneBuilder builder;
     private double initialValue = value;
 
     public Portafoglio(){
         monitorRendimenti = new MonitorRendimenti(arrayTitoli);
+        builder = new AzioneBuilder(monitorRendimenti);
     }
 
     public void addTitolo(Titolo t){
@@ -21,13 +23,10 @@ public class Portafoglio extends Titolo {
         initialValue = value;
     }
 
-    private Azione regenerateAzione(){
-        System.out.println("Azione rigenerata");
-        Azione azione = new Azione();
-        azione.generateMaxDecPer();
-        azione.generateMaxIncPer();
-        azione.setValue(1000);
-        azione.addObserver(monitorRendimenti);
+    public Azione generateAzione(){
+        builder.setStartingValue(1000);
+        builder.setRangePer(5);
+        Azione azione = builder.getResult();
         value = value + azione.getValue();
         return azione;
     }
@@ -51,17 +50,28 @@ public class Portafoglio extends Titolo {
         if(currentTick == interval){
             System.out.println("Controllo rendimento");
             if(value < initialValue) {
-                System.out.println("Perdita!!!");
-                Titolo titoloPeggiore = monitorRendimenti.requestAnalisys();
-                value = value - titoloPeggiore.getValue();
-                int index = arrayTitoli.indexOf(titoloPeggiore);
-                arrayTitoli.set(index, regenerateAzione());
-                initialValue = value;
+                lossAnalisys();
             }
             System.out.println("Nuovo valore" + value);
-            monitorRendimenti.resetVariations();
+            monitorRendimenti.resetVariations(-1);
             currentTick = 0;
         }
 
+    }
+
+    private void lossAnalisys(){
+        Titolo titoloPeggiore = monitorRendimenti.requestAnalisys();
+        if (titoloPeggiore instanceof Azione) {
+            System.out.println("Perdita azionaria!!!");
+            value = value - titoloPeggiore.getValue();
+            int index = arrayTitoli.indexOf(titoloPeggiore);
+            arrayTitoli.set(index, generateAzione());
+            monitorRendimenti.resetVariations(index);
+            initialValue = value;
+        }else{
+            System.out.println("Perdita di portafoglio!!!");
+            Portafoglio p = (Portafoglio) titoloPeggiore;
+            p.lossAnalisys();
+        }
     }
 }

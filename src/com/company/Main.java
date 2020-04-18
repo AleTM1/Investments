@@ -19,16 +19,20 @@ public class Main {
         monitor.extendVariationsArray();
         portafoglio.addObserver(monitor);
 
-        Azione azione;
 
         for(int i=0; i<5; i++) {
-            azione = new Azione();
-            azione.generateMaxDecPer();
-            azione.generateMaxIncPer();
-            azione.setValue(1000);
-            portafoglio.addTitolo(azione);
+            portafoglio.addTitolo(portafoglio.generateAzione());
             System.out.println("Azione creata " + i);
         }
+
+        Portafoglio p2 = new Portafoglio();
+
+        for(int i=0; i<5; i++) {
+            p2.addTitolo(portafoglio.generateAzione());
+            System.out.println("Azione creata " + i);
+        }
+
+        portafoglio.addTitolo(p2);
 
         clock.run(portafoglio);
 

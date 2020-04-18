@@ -1,16 +1,26 @@
 package main_structure;
 
+import observer_classes.Observer;
+
 public class Azione extends Titolo {
-    private static double maxVarPer = 5;
+    private double maxVariationPer;
     private double maxIncPer = 0;
     private double maxDecPer = 0;
 
-    public void generateMaxIncPer() {
-        this.maxIncPer = Math.random() * maxVarPer;
+    public Azione(double maxVarPer, Observer o, double startValue){
+        maxVariationPer = maxVarPer;
+        generateMaxIncPer();
+        generateMaxDecPer();
+        value = startValue;
+        observer = o;
     }
 
-    public void generateMaxDecPer() {
-        this.maxDecPer = Math.random() * maxVarPer;
+    private void generateMaxIncPer() {
+        this.maxIncPer = Math.random() * maxVariationPer;
+    }
+
+    private void generateMaxDecPer() {
+        this.maxDecPer = Math.random() * maxVariationPer;
     }
 
     @Override
