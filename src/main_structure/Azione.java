@@ -24,5 +24,7 @@ public class Azione extends Titolo {
         double newvalue = (variationPer/100 + 1) * value;
         variation = newvalue - value;
         value = newvalue;
+        System.out.println("new value: " + value);
+        System.out.println("variation: " + variation);
     }
 }

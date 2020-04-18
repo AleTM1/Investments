@@ -1,7 +1,7 @@
 package main_structure;
 import observer_classes.Subject;
 
-abstract class Titolo extends Subject {
+abstract public class Titolo extends Subject {
     double value = 0;
 
     public double getValue(){
