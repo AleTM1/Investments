@@ -1,10 +1,9 @@
 package main_structure;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Portafoglio extends Titolo {
-    private final int interval = 3;
+    private static int intervall;
     private final int brenchFactor = 2;
     private ArrayList<Titolo> arrayTitoli;
     private MonitorRendimenti monitorRendimenti;
@@ -13,9 +12,12 @@ public class Portafoglio extends Titolo {
     private boolean root;
     private double initialValue = value;
     private static int currentId = 0;
+    private static int maxPortafogli;
     private int id;
 
-    public Portafoglio(double risk){
+    public Portafoglio(double risk, int interv, int maxPort){
+        intervall = interv;
+        maxPortafogli = maxPort;
         id = 0;
         root = true;
         arrayTitoli = new ArrayList<>();
@@ -31,6 +33,7 @@ public class Portafoglio extends Titolo {
         arrayTitoli = new ArrayList<>();
         monitorRendimenti = new MonitorRendimenti(arrayTitoli);
         builder = b;
+        System.out.println("Creato portafoglio: " + id);
     }
 
     public void addTitolo(Titolo t){
@@ -62,11 +65,10 @@ public class Portafoglio extends Titolo {
             _notify(this);
 
         currentTick++;
-        if(currentTick % interval == 0){
-            System.out.println("Controllo rendimento di " + id);
+        if(currentTick % intervall == 0){
             if(value < initialValue) {
                 lossAnalisys();
-            }else if (value > initialValue && arrayTitoli.size() == brenchFactor){
+            }else if (value > initialValue && arrayTitoli.size() == brenchFactor && currentId < maxPortafogli){
                 winUpgrade();
             }
             if(root)
@@ -90,16 +92,14 @@ public class Portafoglio extends Titolo {
             arrayTitoli.set(index, generateAzione(titoloPeggiore.getValue()));
             monitorRendimenti.resetVariation(index);
             initialValue = value;
-            System.out.println("Perdita azionaria!!! Portafoglio " + id + " azione " + index);
         }else{
-            System.out.println("Perdita di portafoglio!!!");
             Portafoglio p = (Portafoglio) titoloPeggiore;
             p.lossAnalisys();
         }
     }
 
     private void winUpgrade(){
-        //si creano due nuovi portafogli inizializzati con 2 azioni ciascuno
+        // Si creano due nuovi portafogli inizializzati con 2 azioni ciascuno
         this.setValue(this.getValue() / 2);
         Portafoglio p;
         for(int i=0; i<brenchFactor; i++){
@@ -109,10 +109,9 @@ public class Portafoglio extends Titolo {
             }
             this.addTitolo(p);
         }
-        // Le azioni preesistenti vengono adeguate
+        // I valori delle azioni preesistenti vengono adeguati
         for(int i = 0; i<brenchFactor; i++){
             arrayTitoli.get(i).setValue(arrayTitoli.get(i).getValue() / 2);
         }
-        System.out.println("WIN portafoglio: " + id);
     }
 }

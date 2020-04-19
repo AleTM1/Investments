@@ -24,6 +24,7 @@ class Clock {
                 System.out.println("Tick assoluto: " + i);
                 TimeUnit.SECONDS.sleep(1);
                 titolo.updateValue();
+                System.out.println("Ammontare corrente: " + titolo.getValue());
             }catch(InterruptedException e){
                 System.out.println("Qualcosa è andato storto nel Clock");
             }

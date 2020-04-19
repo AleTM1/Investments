@@ -5,7 +5,7 @@ abstract public class Titolo extends Subject {
     double value = 0;
     double variation = 0;
 
-    double getValue(){
+    public double getValue(){
         return value;
     }
 

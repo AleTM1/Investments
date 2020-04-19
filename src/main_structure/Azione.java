@@ -7,7 +7,7 @@ public class Azione extends Titolo {
     private double maxIncPer = 0;
     private double maxDecPer = 0;
 
-    public Azione(double maxVarPer, Observer o, double startValue){
+    Azione(double maxVarPer, Observer o, double startValue){
         maxVariationPer = maxVarPer;
         generateMaxIncPer();
         generateMaxDecPer();

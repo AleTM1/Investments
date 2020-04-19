@@ -4,9 +4,14 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Patrimonio patrimonio = new Patrimonio(10000, 3.2);
+        double initialAmount = 10000;
+        double profileRisk = 3.2;
+        int duration = 80;
+        int maxPortafogli = 10;
+
+        Patrimonio patrimonio = new Patrimonio(initialAmount, profileRisk);
         System.out.println("Amount "+ patrimonio.getTotalAmount());
-        patrimonio.startAutomaticMenagement(20);
+        patrimonio.startAutomaticMenagement(duration, maxPortafogli);
 
     }
 }
