@@ -18,7 +18,6 @@ class AzioneBuilder {
     }
 
     Azione getResult(){
-        Azione azione = new Azione(rangePer, monitor, startingValue);
-        return azione;
+        return new Azione(rangePer, monitor, startingValue);
     }
 }

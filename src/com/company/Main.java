@@ -6,7 +6,7 @@ public class Main {
 
         Patrimonio patrimonio = new Patrimonio(10000, 3.2);
         System.out.println("Amount "+ patrimonio.getTotalAmount());
-        patrimonio.startAutomaticMenagement(10);
+        patrimonio.startAutomaticMenagement(20);
 
     }
 }

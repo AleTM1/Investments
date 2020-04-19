@@ -16,8 +16,8 @@ public class MonitorRendimenti implements Observer {
         variations.add(0.0);
     }
 
-    void resetVariation(int n){
-        variations.set(n, 0.0);
+    void resetVariation(int index){
+        variations.set(index, 0.0);
     }
 
     void resetAllVariations(){
@@ -27,15 +27,10 @@ public class MonitorRendimenti implements Observer {
     }
 
     @Override
-    public void update(Object o){
+    public void update(Object o) {
         Titolo titolo = (Titolo) o;
-        if(arrayTitoli.contains(titolo)){
-            int index = arrayTitoli.indexOf(titolo);
-            variations.set(index, variations.get(index) + titolo.getVariation());
-        }else{
-            arrayTitoli.add(titolo);
-            variations.add(titolo.getVariation());
-        }
+        int index = arrayTitoli.indexOf(titolo);
+        variations.set(index, variations.get(index) + titolo.getVariation());
     }
 
     Titolo requestAnalisys(){

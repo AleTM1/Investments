@@ -1,6 +1,7 @@
 package main_structure;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Portafoglio extends Titolo {
     private final int interval = 3;
@@ -11,6 +12,7 @@ public class Portafoglio extends Titolo {
     private AzioneBuilder builder;
     private boolean root;
     private double initialValue = value;
+    private static int currentId = 0;
     private int id;
 
     public Portafoglio(double risk){
@@ -22,8 +24,9 @@ public class Portafoglio extends Titolo {
         builder.setRangePer(risk);
     }
 
-    private Portafoglio(AzioneBuilder b, int newId){
-        id = newId;
+    private Portafoglio(AzioneBuilder b){
+        id = currentId + 1;
+        currentId++;
         root = false;
         arrayTitoli = new ArrayList<>();
         monitorRendimenti = new MonitorRendimenti(arrayTitoli);
@@ -40,46 +43,54 @@ public class Portafoglio extends Titolo {
 
     public Azione generateAzione(double initValue){
         builder.setStartingValue(initValue);
-        return builder.getResult();
+        Azione azione = builder.getResult();
+        azione.addObserver(monitorRendimenti);
+        return azione;
     }
 
     @Override
     public void updateValue(){
         double actValue = 0;
-        int i = 0;
         for(Titolo t : arrayTitoli){
-            i++;
             t.updateValue();
             actValue += t.getValue();
-            System.out.println("update di " + id + " iterazione " + i);
         }
         variation = actValue - value;
         value = actValue;
-        System.out.println("Valore del portafoglio: " + id +" valore: " + value);
 
-        if (!root) {
+        if (!root)
             _notify(this);
-        }
+
         currentTick++;
         if(currentTick % interval == 0){
-            System.out.println("Controllo rendimento");
+            System.out.println("Controllo rendimento di " + id);
             if(value < initialValue) {
                 lossAnalisys();
             }else if (value > initialValue && arrayTitoli.size() == brenchFactor){
                 winUpgrade();
             }
-            monitorRendimenti.resetAllVariations();
+            if(root)
+                resetAll();
+        }
+    }
+
+    private void resetAll(){
+        monitorRendimenti.resetAllVariations();
+        for (Titolo t : arrayTitoli) {
+            if (t instanceof Portafoglio) {
+                ((Portafoglio)t).resetAll();
+            }
         }
     }
 
     private void lossAnalisys(){
         Titolo titoloPeggiore = monitorRendimenti.requestAnalisys();
         if (titoloPeggiore instanceof Azione) {
-            System.out.println("Perdita azionaria!!!");
             int index = arrayTitoli.indexOf(titoloPeggiore);
             arrayTitoli.set(index, generateAzione(titoloPeggiore.getValue()));
             monitorRendimenti.resetVariation(index);
             initialValue = value;
+            System.out.println("Perdita azionaria!!! Portafoglio " + id + " azione " + index);
         }else{
             System.out.println("Perdita di portafoglio!!!");
             Portafoglio p = (Portafoglio) titoloPeggiore;
@@ -92,7 +103,7 @@ public class Portafoglio extends Titolo {
         this.setValue(this.getValue() / 2);
         Portafoglio p;
         for(int i=0; i<brenchFactor; i++){
-            p = new Portafoglio(builder, id + i + 1);
+            p = new Portafoglio(builder);
             for(int k=0; k<brenchFactor; k++) {
                 p.addTitolo(p.generateAzione(this.getValue()/(Math.pow(brenchFactor, 2))));
             }
