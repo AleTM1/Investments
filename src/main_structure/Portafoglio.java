@@ -67,9 +67,12 @@ public class Portafoglio extends Titolo {
         currentTick++;
         if(currentTick % intervall == 0){
             if(value < initialValue) {
+                System.out.println("Portafoglio: " + id + " in perdita");
                 lossAnalisys();
-            }else if (value > initialValue && arrayTitoli.size() == brenchFactor && currentId < maxPortafogli){
-                winUpgrade();
+            }else{
+                System.out.println("Portafoglio: " + id + " in guadagno");
+                if(currentId < maxPortafogli && arrayTitoli.size() == brenchFactor)
+                    winUpgrade();
             }
             if(root)
                 resetAll();
@@ -100,18 +103,19 @@ public class Portafoglio extends Titolo {
 
     private void winUpgrade(){
         // Si creano due nuovi portafogli inizializzati con 2 azioni ciascuno
-        this.setValue(this.getValue() / 2);
+        double newAzioniValue = this.getValue() / (Math.pow(brenchFactor, 3));
         Portafoglio p;
+        this.setValue(this.getValue()/brenchFactor);
         for(int i=0; i<brenchFactor; i++){
             p = new Portafoglio(builder);
             for(int k=0; k<brenchFactor; k++) {
-                p.addTitolo(p.generateAzione(this.getValue()/(Math.pow(brenchFactor, 2))));
+                p.addTitolo(p.generateAzione(newAzioniValue));
             }
             this.addTitolo(p);
         }
         // I valori delle azioni preesistenti vengono adeguati
         for(int i = 0; i<brenchFactor; i++){
-            arrayTitoli.get(i).setValue(arrayTitoli.get(i).getValue() / 2);
+            arrayTitoli.get(i).setValue(arrayTitoli.get(i).getValue() / brenchFactor);
         }
     }
 }
