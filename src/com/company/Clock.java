@@ -21,6 +21,7 @@ class Clock {
     void run(Titolo titolo){
         for(int i = 0; i < maxTick; i++){
             try {
+                System.out.println("Tick assoluto: " + i);
                 TimeUnit.SECONDS.sleep(1);
                 titolo.updateValue();
             }catch(InterruptedException e){

@@ -28,7 +28,6 @@ public class Patrimonio {
     public void startAutomaticMenagement(int duration){
         Clock clock = Clock.getInstance(duration);
         Portafoglio portafoglio = new Portafoglio(risk);
-        portafoglio.setRoot();
         portafoglio.addTitolo(portafoglio.generateAzione(totalAmount/2));
         portafoglio.addTitolo(portafoglio.generateAzione(totalAmount/2));
         clock.run(portafoglio);

@@ -4,21 +4,30 @@ import java.util.ArrayList;
 
 public class Portafoglio extends Titolo {
     private final int interval = 3;
-    private ArrayList<Titolo> arrayTitoli = new ArrayList<>();
+    private final int brenchFactor = 2;
+    private ArrayList<Titolo> arrayTitoli;
     private MonitorRendimenti monitorRendimenti;
     private int currentTick = 0;
     private AzioneBuilder builder;
-    private boolean root = false;
+    private boolean root;
     private double initialValue = value;
+    private int id;
 
     public Portafoglio(double risk){
+        id = 0;
+        root = true;
+        arrayTitoli = new ArrayList<>();
         monitorRendimenti = new MonitorRendimenti(arrayTitoli);
         builder = new AzioneBuilder(monitorRendimenti);
         builder.setRangePer(risk);
     }
 
-    public void setRoot() {
-        this.root = true;
+    private Portafoglio(AzioneBuilder b, int newId){
+        id = newId;
+        root = false;
+        arrayTitoli = new ArrayList<>();
+        monitorRendimenti = new MonitorRendimenti(arrayTitoli);
+        builder = b;
     }
 
     public void addTitolo(Titolo t){
@@ -37,25 +46,27 @@ public class Portafoglio extends Titolo {
     @Override
     public void updateValue(){
         double actValue = 0;
+        int i = 0;
         for(Titolo t : arrayTitoli){
+            i++;
             t.updateValue();
             actValue += t.getValue();
+            System.out.println("update di " + id + " iterazione " + i);
         }
         variation = actValue - value;
         value = actValue;
-        System.out.println("Valore del portafoglio: " + value);
+        System.out.println("Valore del portafoglio: " + id +" valore: " + value);
 
         if (!root) {
             _notify(this);
         }
-
         currentTick++;
-        System.out.println("Current tick" + currentTick);
-
         if(currentTick % interval == 0){
             System.out.println("Controllo rendimento");
             if(value < initialValue) {
                 lossAnalisys();
+            }else if (value > initialValue && arrayTitoli.size() == brenchFactor){
+                winUpgrade();
             }
             monitorRendimenti.resetAllVariations();
         }
@@ -74,5 +85,23 @@ public class Portafoglio extends Titolo {
             Portafoglio p = (Portafoglio) titoloPeggiore;
             p.lossAnalisys();
         }
+    }
+
+    private void winUpgrade(){
+        //si creano due nuovi portafogli inizializzati con 2 azioni ciascuno
+        this.setValue(this.getValue() / 2);
+        Portafoglio p;
+        for(int i=0; i<brenchFactor; i++){
+            p = new Portafoglio(builder, id + i + 1);
+            for(int k=0; k<brenchFactor; k++) {
+                p.addTitolo(p.generateAzione(this.getValue()/(Math.pow(brenchFactor, 2))));
+            }
+            this.addTitolo(p);
+        }
+        // Le azioni preesistenti vengono adeguate
+        for(int i = 0; i<brenchFactor; i++){
+            arrayTitoli.get(i).setValue(arrayTitoli.get(i).getValue() / 2);
+        }
+        System.out.println("WIN portafoglio: " + id);
     }
 }

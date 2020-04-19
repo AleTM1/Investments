@@ -19,7 +19,6 @@ class AzioneBuilder {
 
     Azione getResult(){
         Azione azione = new Azione(rangePer, monitor, startingValue);
-        System.out.println("Azione generata");
         return azione;
     }
 }
