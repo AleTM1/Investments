@@ -2,11 +2,11 @@ package com.company;
 
 import main_structure.Portafoglio;
 
-class Patrimonio {
+public class Patrimonio {
     private double totalAmount;
     private double risk;
 
-    Patrimonio(double initialAmount, double profileRisk){
+    public Patrimonio(double initialAmount, double profileRisk){
         if(profileRisk <= 0){
             risk = 0.5;
         }else if(profileRisk > 10){

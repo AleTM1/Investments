@@ -8,7 +8,7 @@ public class MonitorRendimenti implements Observer {
     private ArrayList<Titolo> arrayTitoli;
     private ArrayList<Double> variations = new ArrayList<>();
 
-    MonitorRendimenti(ArrayList<Titolo> array){
+    public MonitorRendimenti(ArrayList<Titolo> array){
         arrayTitoli = array;
     }
 
