@@ -11,9 +11,7 @@ class Printer {
      void printStructure(Portafoglio root) {
         try {
             FileWriter writer = new FileWriter("src/printer_results/structure.txt", false);
-
-            dfsPrint(writer, root);
-
+            propagatePrint(writer, root);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -21,13 +19,19 @@ class Printer {
 
     }
 
-    private void dfsPrint(FileWriter writer, Portafoglio portafoglio) throws IOException{
-        writer.write("portafoglio " + portafoglio.getId());
+    private void propagatePrint(FileWriter writer, Portafoglio portafoglio) throws IOException{
+        writer.write("portafoglio " + portafoglio.getId() + " dal valore di " + portafoglio.getValue() + " contiene{");
+        for(Titolo t : portafoglio.getArrayTitoli()){
+            if(t instanceof Portafoglio)
+                writer.write(" - portafoglio " + ((Portafoglio) t).getId());
+        }
+        writer.write(" }");
         writer.write("\r\n");
         for(Titolo t : portafoglio.getArrayTitoli()){
             if(t instanceof Portafoglio)
-                dfsPrint(writer, (Portafoglio)t);
+                propagatePrint(writer, (Portafoglio)t);
         }
+
     }
 
 }
