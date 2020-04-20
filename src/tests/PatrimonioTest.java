@@ -1,33 +1,49 @@
 package tests;
 
 import com.company.Patrimonio;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.*;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 class PatrimonioTest {
 
-    @BeforeEach
-    void setUp() throws NoSuchFieldException, IllegalAccessException{
-        Patrimonio patrimonio = new Patrimonio(1000, 5);
+    double[] setUp(double amount, double pR)throws NoSuchFieldException, IllegalAccessException{
+        Patrimonio patrimonio = new Patrimonio(amount, pR);
         Class p = patrimonio.getClass();
         Field risk = p.getDeclaredField("risk");
         risk.setAccessible(true);
-        double r = (double)risk.get(patrimonio);
-        System.out.println(r);
-    }
+        double r = (Double) risk.get(patrimonio);
+        Field totalAmount = p.getDeclaredField("totalAmount");
+        totalAmount.setAccessible(true);
+        double a = (Double) totalAmount.get(patrimonio);
 
-    @AfterEach
-    void tearDown() {
+        double[] array = new double[2];
+        array[0] = a;
+        array[1] = r;
+        return array;
     }
 
     @Test
-    void getTotalAmount() {
+    void testConstructor() throws NoSuchFieldException, IllegalAccessException{
+        double amount = 1000.0;
+        double pR = 5.0;
+        double[] results = setUp(amount, pR);
+        assertEquals(results[1], 5);
+        assertEquals(results[0], 1000);
+
+        amount = -20.0;
+        pR = 0;
+        results = setUp(amount, pR);
+        assertEquals(results[1], 0.5);
+        assertEquals(results[0], 100);
+
+        amount = 100;
+        pR = 30;
+        results = setUp(amount, pR);
+        assertEquals(results[1], 10);
+        assertEquals(results[0], 100);
     }
 
-    @Test
-    void startAutomaticMenagement() {
-    }
 }

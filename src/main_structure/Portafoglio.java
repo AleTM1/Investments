@@ -36,6 +36,14 @@ public class Portafoglio extends Titolo {
         System.out.println("Creato portafoglio: " + id);
     }
 
+    public ArrayList<Titolo> getArrayTitoli() {
+        return arrayTitoli;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public void addTitolo(Titolo t){
         arrayTitoli.add(t);
         monitorRendimenti.extendVariationsArray();

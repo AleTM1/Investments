@@ -7,14 +7,14 @@ public class Patrimonio {
     private double risk;
 
     public Patrimonio(double initialAmount, double profileRisk){
-        if(profileRisk <= 0){
+        if(profileRisk <= 0.5){
             risk = 0.5;
         }else if(profileRisk > 10){
             risk = 10;
         }else{
             risk = profileRisk;
         }
-        totalAmount = initialAmount;
+        totalAmount = initialAmount > 100 ? initialAmount : 100;
     }
 
     double getTotalAmount() {
@@ -27,5 +27,7 @@ public class Patrimonio {
         portafoglio.addTitolo(portafoglio.generateAzione(totalAmount/2));
         portafoglio.addTitolo(portafoglio.generateAzione(totalAmount/2));
         clock.run(portafoglio);
+        Printer printer = new Printer();
+        printer.printStructure(portafoglio);
     }
 }

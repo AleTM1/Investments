@@ -6,7 +6,7 @@ public class Main {
 
         double initialAmount = 10000;
         double profileRisk = 4;
-        int duration = 100;
+        int duration = 50;
         int maxPortafogli = 10;
 
         Patrimonio patrimonio = new Patrimonio(initialAmount, profileRisk);
