@@ -8,9 +8,11 @@ import java.io.IOException;
 
 class Printer {
 
+    private String path = new String("src/printer_results/structure.txt");
+
      void printStructure(Portafoglio root) {
         try {
-            FileWriter writer = new FileWriter("src/printer_results/structure.txt", false);
+            FileWriter writer = new FileWriter(path, false);
             propagatePrint(writer, root);
             writer.close();
         } catch (IOException e) {
