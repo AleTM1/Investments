@@ -12,9 +12,7 @@ import java.util.ArrayList;
 
 class AzioneTest {
 
-    @Test
-    double[] setUp(double maxVarPer, Observer o, double startValue) throws NoSuchFieldException, IllegalAccessException {
-        Azione azione = new Azione(maxVarPer, o, startValue);
+    double[] setUpClass(Azione azione)throws NoSuchFieldException, IllegalAccessException{
         Class a = azione.getClass();
         Field mIP = a.getDeclaredField("maxIncPer");
         mIP.setAccessible(true);
@@ -23,12 +21,17 @@ class AzioneTest {
         mDP.setAccessible(true);
         double maxDecPer = (Double) mDP.get(azione);
 
-        assertEquals(startValue, azione.getValue());
-
         double[] array = new double[2];
         array[0] = maxIncPer;
         array[1] = maxDecPer;
         return array;
+    }
+
+    @Test
+    double[] setUp(double maxVarPer, Observer o, double startValue) throws NoSuchFieldException, IllegalAccessException {
+        Azione azione = new Azione(maxVarPer, o, startValue);
+        assertEquals(startValue, azione.getValue());
+        return setUpClass(azione);
     }
 
     @Test

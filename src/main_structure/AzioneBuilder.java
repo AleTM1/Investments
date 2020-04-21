@@ -1,23 +1,23 @@
 package main_structure;
 
-class AzioneBuilder {
+public class AzioneBuilder {
     private double startingValue;
     private double rangePer;
     private MonitorRendimenti monitor;
 
-    AzioneBuilder(MonitorRendimenti m){
+    public AzioneBuilder(MonitorRendimenti m){
         monitor = m;
     }
 
-    void setStartingValue(double startingValue) {
+    public void setStartingValue(double startingValue) {
         this.startingValue = startingValue;
     }
 
-    void setRangePer(double rangePer) {
+    public void setRangePer(double rangePer) {
         this.rangePer = rangePer;
     }
 
-    Azione getResult(){
+    public Azione getResult(){
         return new Azione(rangePer, monitor, startingValue);
     }
 }
