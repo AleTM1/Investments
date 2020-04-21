@@ -12,7 +12,7 @@ public class MonitorRendimenti implements Observer {
         arrayTitoli = array;
     }
 
-    void extendVariationsArray(){
+    public void extendVariationsArray(){
         variations.add(0.0);
     }
 

@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import main_structure.Azione;
 import main_structure.MonitorRendimenti;
+import main_structure.Titolo;
 import observer_classes.Observer;
 import org.junit.jupiter.api.Test;
 
@@ -39,5 +40,18 @@ class AzioneTest {
         double[] results = setUp(maxVarPer, o, startValue);
         assertTrue(results[0] <= 3 && results[0] >= 0);
         assertTrue(results[1] <= 3 && results[1] >= 0);
+    }
+
+    @Test
+    void testUpdateValue(){
+        double maxVarPer = 3;
+        ArrayList<Titolo> titoli = new ArrayList<>();
+        MonitorRendimenti o = new MonitorRendimenti(titoli);
+        double startValue = 1000;
+        Azione azione = new Azione(maxVarPer, o, startValue);
+        titoli.add(azione);
+        o.extendVariationsArray();
+        azione.updateValue();
+        assertTrue(azione.getValue() <= 1000 && azione.getValue() >= 970);
     }
 }
