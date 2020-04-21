@@ -17,7 +17,7 @@ public class Patrimonio {
         totalAmount = initialAmount > 100 ? initialAmount : 100;
     }
 
-    double getTotalAmount() {
+    public double getTotalAmount() {
         return totalAmount;
     }
 
