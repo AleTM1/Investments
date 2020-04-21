@@ -16,11 +16,11 @@ public class MonitorRendimenti implements Observer {
         variations.add(0.0);
     }
 
-    void resetVariation(int index){
+    public void resetVariation(int index){
         variations.set(index, 0.0);
     }
 
-    void resetAllVariations(){
+    public void resetAllVariations(){
         for (Double v : variations) {
             v = 0.0;
         }
