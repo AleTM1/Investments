@@ -2,18 +2,19 @@ package com.company;
 
 import main_structure.Titolo;
 
-class Clock {
+public class Clock {
     private int maxTick;
     private static Clock self = null;
 
     private Clock(int mT){
         maxTick = mT;
     }
-    static Clock getInstance(int mT){
+    public static Clock getInstance(int mT){
         if(self != null){
             return self;
         }else{
-            return new Clock(mT);
+            self = new Clock(mT);
+            return self;
         }
     }
     void run(Titolo titolo){

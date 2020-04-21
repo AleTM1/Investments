@@ -7,7 +7,6 @@ import main_structure.MonitorRendimenti;
 import main_structure.Titolo;
 import observer_classes.Observer;
 import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.*;
 import java.util.ArrayList;
 
