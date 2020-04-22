@@ -21,7 +21,7 @@ public class Patrimonio {
         return totalAmount;
     }
 
-    void startAutomaticMenagement(int duration, int intervall ,int maxPortafogli){
+    double startAutomaticMenagement(int duration, int intervall ,int maxPortafogli){
         Clock clock = Clock.getInstance(duration);
         Portafoglio portafoglio = new Portafoglio(risk, intervall, maxPortafogli);
         portafoglio.addTitolo(portafoglio.generateAzione(totalAmount/2));
@@ -30,5 +30,6 @@ public class Patrimonio {
         totalAmount = portafoglio.getValue();
         Printer printer = new Printer();
         printer.printStructure(portafoglio);
+        return totalAmount;
     }
 }
