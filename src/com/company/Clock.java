@@ -20,7 +20,7 @@ public class Clock {
     void run(Titolo titolo){
         for(int i = 0; i < maxTick; i++){
             try {
-                Thread.sleep(200);
+                Thread.sleep(100);
                 titolo.updateValue();
                 System.out.println("Ammontare corrente: " + titolo.getValue() + " al tick " + i);
             }catch(InterruptedException e){

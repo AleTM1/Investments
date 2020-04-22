@@ -21,9 +21,8 @@ public class MonitorRendimenti implements Observer {
     }
 
     public void resetAllVariations(){
-        for (Double v : variations) {
-            v = 0.0;
-        }
+        for (int i = 0; i < variations.size(); i++)
+            variations.set(i, 0.0);
     }
 
     @Override
@@ -33,7 +32,7 @@ public class MonitorRendimenti implements Observer {
         variations.set(index, variations.get(index) + titolo.getVariation());
     }
 
-    Titolo requestAnalisys(){
+    public Titolo requestAnalisys(){
         double min = variations.get(0);
         for(Double v : variations){
             min = min > v ? v : min;

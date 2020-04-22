@@ -6,12 +6,13 @@ public class Main {
 
         double initialAmount = 10000;
         double profileRisk = 4;
-        int duration = 50;
-        int maxPortafogli = 10;
+        int duration = 200;
+        int intervall = 10;
+        int maxPortafogli = 30;
 
         Patrimonio patrimonio = new Patrimonio(initialAmount, profileRisk);
         System.out.println("Amount "+ patrimonio.getTotalAmount());
-        patrimonio.startAutomaticMenagement(duration, maxPortafogli);
+        patrimonio.startAutomaticMenagement(duration, intervall, maxPortafogli);
 
     }
 }

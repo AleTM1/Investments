@@ -1,11 +1,31 @@
-portafoglio 0 dal valore di 10705.055215419156 contiene{ - portafoglio 1 - portafoglio 2 }
-portafoglio 1 dal valore di 2916.78570315486 contiene{ - portafoglio 9 - portafoglio 10 }
-portafoglio 9 dal valore di 663.8062911031118 contiene{ }
-portafoglio 10 dal valore di 690.8162164961415 contiene{ }
-portafoglio 2 dal valore di 3229.7401066976263 contiene{ - portafoglio 3 - portafoglio 4 }
-portafoglio 3 dal valore di 741.8260880794635 contiene{ - portafoglio 5 - portafoglio 6 }
-portafoglio 5 dal valore di 187.08680316833636 contiene{ }
-portafoglio 6 dal valore di 176.50426966441046 contiene{ }
-portafoglio 4 dal valore di 807.639271502313 contiene{ - portafoglio 7 - portafoglio 8 }
-portafoglio 7 dal valore di 148.22702411027913 contiene{ }
-portafoglio 8 dal valore di 175.59639374528277 contiene{ }
+portafoglio 0 dal valore di 21308.25899335748 contiene{ - portafoglio 1 - portafoglio 2 }
+portafoglio 1 dal valore di 3035.5682143838812 contiene{ - portafoglio 3 - portafoglio 4 }
+portafoglio 3 dal valore di 775.2356057712223 contiene{ - portafoglio 9 - portafoglio 10 }
+portafoglio 9 dal valore di 282.06626348594085 contiene{ - portafoglio 25 - portafoglio 26 }
+portafoglio 25 dal valore di 78.0801422850859 contiene{ }
+portafoglio 26 dal valore di 44.958629957755406 contiene{ }
+portafoglio 10 dal valore di 251.22888155637216 contiene{ - portafoglio 17 - portafoglio 18 }
+portafoglio 17 dal valore di 102.78163962254496 contiene{ - portafoglio 27 - portafoglio 28 }
+portafoglio 27 dal valore di 30.166934290733696 contiene{ }
+portafoglio 28 dal valore di 10.718148479004096 contiene{ }
+portafoglio 18 dal valore di 54.034145629299076 contiene{ }
+portafoglio 4 dal valore di 1059.2046973538927 contiene{ - portafoglio 11 - portafoglio 12 }
+portafoglio 11 dal valore di 513.9879582094655 contiene{ - portafoglio 19 - portafoglio 20 }
+portafoglio 19 dal valore di 79.55499232189493 contiene{ }
+portafoglio 20 dal valore di 31.251911990762938 contiene{ }
+portafoglio 12 dal valore di 183.86144848005063 contiene{ }
+portafoglio 2 dal valore di 13061.177204132005 contiene{ - portafoglio 5 - portafoglio 6 }
+portafoglio 5 dal valore di 2074.405399476635 contiene{ - portafoglio 7 - portafoglio 8 }
+portafoglio 7 dal valore di 439.0348452862649 contiene{ - portafoglio 21 - portafoglio 22 }
+portafoglio 21 dal valore di 131.3550540631264 contiene{ }
+portafoglio 22 dal valore di 128.26541258707147 contiene{ - portafoglio 29 - portafoglio 30 }
+portafoglio 29 dal valore di 25.534482653036047 contiene{ }
+portafoglio 30 dal valore di 15.611405210633432 contiene{ }
+portafoglio 8 dal valore di 296.8836147970692 contiene{ - portafoglio 13 - portafoglio 14 }
+portafoglio 13 dal valore di 83.70592440695569 contiene{ }
+portafoglio 14 dal valore di 62.11207727152283 contiene{ - portafoglio 23 - portafoglio 24 }
+portafoglio 23 dal valore di 10.965706910402819 contiene{ }
+portafoglio 24 dal valore di 14.676679093268085 contiene{ }
+portafoglio 6 dal valore di 968.2851021889594 contiene{ - portafoglio 15 - portafoglio 16 }
+portafoglio 15 dal valore di 139.3362951726029 contiene{ }
+portafoglio 16 dal valore di 421.4031694251615 contiene{ }

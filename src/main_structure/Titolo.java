@@ -9,7 +9,7 @@ abstract public class Titolo extends Subject {
         return value;
     }
 
-    double getVariation(){
+    public double getVariation(){
         return variation;
     }
 
