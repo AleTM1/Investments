@@ -13,8 +13,8 @@ abstract public class Titolo extends Subject {
         return variation;
     }
 
-    void setValue(double d){
-        value = d;
+    void setValue(double v){
+        value = v;
     }
 
     public abstract void updateValue();

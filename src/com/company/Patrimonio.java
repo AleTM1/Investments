@@ -22,10 +22,10 @@ public class Patrimonio {
     }
 
     double startAutomaticMenagement(int duration, int intervall ,int maxPortafogli){
-        Clock clock = Clock.getInstance(duration);
         Portafoglio portafoglio = new Portafoglio(risk, intervall, maxPortafogli);
         portafoglio.addTitolo(portafoglio.generateAzione(totalAmount/2));
         portafoglio.addTitolo(portafoglio.generateAzione(totalAmount/2));
+        Clock clock = Clock.getInstance(duration);
         clock.run(portafoglio);
         totalAmount = portafoglio.getValue();
         Printer printer = new Printer();
