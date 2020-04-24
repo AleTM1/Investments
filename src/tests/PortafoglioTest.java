@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class PortafoglioTest {
 
     @Test
-    void setUp()throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+    void initTest()throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         Portafoglio portafoglio = new Portafoglio(3.0, 8, 12);
 
         Class p = portafoglio.getClass();
@@ -50,12 +50,12 @@ class PortafoglioTest {
         lossAnalisysTest();
     }
 
-    @Test
+
     void getIdTest(Portafoglio portafoglio, int n) {
         assertEquals(portafoglio.getId(), n);
     }
 
-    @Test
+
     void addTitoloTest(Portafoglio portafoglio) {
         Azione a1 = portafoglio.generateAzione(1200);
         Azione a2 = portafoglio.generateAzione(2004.5);
@@ -67,7 +67,7 @@ class PortafoglioTest {
         assertEquals(portafoglio.getValue(), 3204.5);
     }
 
-    @Test
+
     void generateAzioneTest(Portafoglio portafoglio) {
         portafoglio.addTitolo(portafoglio.generateAzione(978.3));
         portafoglio.addTitolo(portafoglio.generateAzione(1402));
@@ -75,7 +75,7 @@ class PortafoglioTest {
         assertEquals(portafoglio.getArrayTitoli().get(3).getValue(), 1402);
     }
 
-    @Test
+
     void upgradeNResetTest(Portafoglio portafoglio, MonitorRendimenti monitorRendimenti, AzioneBuilder builder) throws  NoSuchFieldException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
         Portafoglio portafoglio1 = (Portafoglio) portafoglio.getArrayTitoli().get(portafoglio.getArrayTitoli().size() - 1);
         assertEquals(portafoglio1.getId(), 2);
@@ -128,7 +128,7 @@ class PortafoglioTest {
 
     }
 
-    @Test
+
     void lossAnalisysTest()throws NoSuchFieldException, IllegalAccessException, InvocationTargetException, NoSuchMethodException{
         Portafoglio portafoglio = new Portafoglio(3.0, 8, 12);
         Azione a1 = portafoglio.generateAzione(1200);

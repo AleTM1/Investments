@@ -40,7 +40,7 @@ class MonitorRendimentiTest {
         requestAnalisysTest(monitorRendimenti, variations, titoli);
     }
 
-    @Test
+
     void resetVariationsTest(MonitorRendimenti monitorRendimenti, ArrayList<Double> variations){
         variations.set(0, 3.2);
         assertEquals(variations.get(0), 3.2);
@@ -53,14 +53,14 @@ class MonitorRendimentiTest {
         assertEquals(variations.get(1), 0);
     }
 
-    @Test
+
     void updateTest(MonitorRendimenti monitorRendimenti, ArrayList<Double> variations, ArrayList<Titolo> titoli) {
         monitorRendimenti.resetAllVariations();
         titoli.get(0).updateValue();
         assertEquals(variations.get(0), titoli.get(0).getVariation());
     }
 
-    @Test
+
     void requestAnalisysTest(MonitorRendimenti monitorRendimenti, ArrayList<Double> variations, ArrayList<Titolo> titoli) {
         monitorRendimenti.resetAllVariations();
         variations.set(0, 2.3);

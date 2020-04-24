@@ -27,7 +27,6 @@ class AzioneTest {
         return array;
     }
 
-    @Test
     double[] setUp(double maxVarPer, Observer o, double startValue) throws NoSuchFieldException, IllegalAccessException {
         Azione azione = new Azione(maxVarPer, o, startValue);
         assertEquals(startValue, azione.getValue());

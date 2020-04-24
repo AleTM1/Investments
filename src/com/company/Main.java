@@ -12,7 +12,7 @@ public class Main {
 
         Patrimonio patrimonio = new Patrimonio(userAmount, profileRisk);
         System.out.println("Amount "+ patrimonio.getTotalAmount());
-        userAmount = patrimonio.startAutomaticMenagement(duration, intervall, maxPortafogli);
+        userAmount = patrimonio.startAutoMenagement(duration, intervall, maxPortafogli);
         System.out.println("Al termine della simulazione il nuovo patrimonio ammonta a: " + userAmount);
     }
 }

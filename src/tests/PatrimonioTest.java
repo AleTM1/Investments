@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PatrimonioTest {
 
-    @Test
     double setUp(double amount, double pR)throws NoSuchFieldException, IllegalAccessException{
         Patrimonio patrimonio = new Patrimonio(amount, pR);
         Class p = patrimonio.getClass();

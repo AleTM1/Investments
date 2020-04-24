@@ -21,7 +21,7 @@ public class Patrimonio {
         return totalAmount;
     }
 
-    double startAutomaticMenagement(int duration, int intervall ,int maxPortafogli){
+    double startAutoMenagement(int duration, int intervall ,int maxPortafogli){
         Portafoglio portafoglio = new Portafoglio(risk, intervall, maxPortafogli);
         portafoglio.addTitolo(portafoglio.generateAzione(totalAmount/2));
         portafoglio.addTitolo(portafoglio.generateAzione(totalAmount/2));
