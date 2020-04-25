@@ -5,16 +5,16 @@ public class AzioneBuilder {
     private double rangePer;
     private MonitorRendimenti monitor;
 
-    public AzioneBuilder(MonitorRendimenti m){
-        monitor = m;
+    public AzioneBuilder(double risk){
+        rangePer = risk;
     }
 
     public void setStartingValue(double startingValue) {
         this.startingValue = startingValue;
     }
 
-    public void setRangePer(double rangePer) {
-        this.rangePer = rangePer;
+    public void setMonitor(MonitorRendimenti monitor) {
+        this.monitor = monitor;
     }
 
     public Azione getResult(){

@@ -14,8 +14,8 @@ class AzioneBuilderTest {
     @Test
     void AzioneBuilderTests() throws NoSuchFieldException, IllegalAccessException{
         MonitorRendimenti monitorRendimenti = new MonitorRendimenti(new ArrayList<>());
-        AzioneBuilder azioneBuilder = new AzioneBuilder(monitorRendimenti);
-        azioneBuilder.setRangePer(4);
+        AzioneBuilder azioneBuilder = new AzioneBuilder(4);
+        azioneBuilder.setMonitor(monitorRendimenti);
         azioneBuilder.setStartingValue(2000);   // tale valore verrà verificato nei test di Azione
         Azione azione = azioneBuilder.getResult();
         AzioneTest azioneTest = new AzioneTest();

@@ -22,8 +22,7 @@ public class Portafoglio extends Titolo {
         root = true;
         arrayTitoli = new ArrayList<>();
         monitorRendimenti = new MonitorRendimenti(arrayTitoli);
-        builder = new AzioneBuilder(monitorRendimenti);
-        builder.setRangePer(risk);
+        builder = new AzioneBuilder(risk);
     }
 
     private Portafoglio(AzioneBuilder b){
@@ -54,6 +53,7 @@ public class Portafoglio extends Titolo {
 
     public Azione generateAzione(double initValue){
         builder.setStartingValue(initValue);
+        builder.setMonitor(monitorRendimenti);
         Azione azione = builder.getResult();
         azione.addObserver(monitorRendimenti);
         return azione;
