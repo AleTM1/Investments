@@ -26,7 +26,7 @@ public class Portafoglio extends Titolo {
     }
 
     private Portafoglio(AzioneBuilder b){
-        id = currentId++;
+        id = ++currentId;
         root = false;
         arrayTitoli = new ArrayList<>();
         monitorRendimenti = new MonitorRendimenti(arrayTitoli);
