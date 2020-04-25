@@ -81,6 +81,7 @@ public class Portafoglio extends Titolo {
                 if(currentId < maxPortafogli && arrayTitoli.size() == brenchFactor)
                     winUpgrade();
             }
+            initialValue = value;
             if(root)
                 resetAll();
         }
@@ -101,7 +102,6 @@ public class Portafoglio extends Titolo {
             int index = arrayTitoli.indexOf(titoloPeggiore);
             arrayTitoli.set(index, generateAzione(titoloPeggiore.getValue()));
             monitorRendimenti.resetVariation(index);
-            initialValue = value;
         }else{
             Portafoglio p = (Portafoglio) titoloPeggiore;
             p.lossAnalisys();
