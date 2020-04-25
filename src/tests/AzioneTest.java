@@ -53,6 +53,6 @@ class AzioneTest {
         titoli.add(azione);
         o.extendVariationsArray();
         azione.updateValue();
-        assertTrue(azione.getValue() <= 1000 && azione.getValue() >= 970);
+        assertTrue(azione.getValue() <= 1030 && azione.getValue() >= 970);
     }
 }

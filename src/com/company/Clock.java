@@ -17,15 +17,15 @@ public class Clock {
             return self;
         }
     }
-    void run(Titolo titolo){
-        for(int i = 0; i < maxTick; i++){
-            try {
+    void run(Titolo titolo) {
+        try {
+            for (int i = 0; i < maxTick; i++) {
                 Thread.sleep(100);
                 titolo.updateValue();
                 System.out.println("Ammontare corrente: " + titolo.getValue() + " al tick " + i);
-            }catch(InterruptedException e){
-                System.out.println("Qualcosa è andato storto nel Clock");
             }
+        }catch(InterruptedException e){
+                System.out.println("Qualcosa è andato storto nel Clock");
         }
     }
 }

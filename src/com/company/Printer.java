@@ -8,7 +8,7 @@ import java.io.IOException;
 
 class Printer {
 
-    private String path = new String("src/printer_results/structure.txt");
+    private final String path = new String("src/printer_results/structure.txt");
 
      void printStructure(Portafoglio root) {
         try {
@@ -17,8 +17,8 @@ class Printer {
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Non è stato possibile salvare su file di testo");
         }
-
     }
 
     private void propagatePrint(FileWriter writer, Portafoglio portafoglio) throws IOException{
