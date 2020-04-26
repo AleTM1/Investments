@@ -21,7 +21,7 @@ public class Patrimonio {
         return totalAmount;
     }
 
-    double startAutoMenagement(int duration, int intervall, int maxPortafogli){
+    public double startAutoMenagement(int duration, int intervall, int maxPortafogli){
         try {
             verifyInputs(duration, intervall, maxPortafogli);
             Portafoglio portafoglio = new Portafoglio(risk, intervall, maxPortafogli);

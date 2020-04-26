@@ -35,5 +35,15 @@ class PatrimonioTest {
         pR = 30;
         result = setUp(amount, pR);
         assertEquals(result, 10);
+
+        Patrimonio patrimonio = new Patrimonio(amount, pR);
+        double final_amount = patrimonio.startAutoMenagement(-1, 5, 10);
+        assertEquals(final_amount, amount);
+        final_amount = patrimonio.startAutoMenagement(3, 5, 10);
+        assertEquals(final_amount, amount);
+        final_amount = patrimonio.startAutoMenagement(10, 15, 10);
+        assertEquals(final_amount, amount);
+        final_amount = patrimonio.startAutoMenagement(30, 5, 0);
+        assertEquals(final_amount, amount);
     }
 }
