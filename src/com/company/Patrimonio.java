@@ -21,15 +21,27 @@ public class Patrimonio {
         return totalAmount;
     }
 
-    double startAutoMenagement(int duration, int intervall ,int maxPortafogli){
-        Portafoglio portafoglio = new Portafoglio(risk, intervall, maxPortafogli);
-        portafoglio.addTitolo(portafoglio.generateAzione(totalAmount/2));
-        portafoglio.addTitolo(portafoglio.generateAzione(totalAmount/2));
-        Clock clock = Clock.getInstance(duration);
-        clock.run(portafoglio);
-        totalAmount = portafoglio.getValue();
-        Printer printer = new Printer();
-        printer.printStructure(portafoglio);
+    double startAutoMenagement(int duration, int intervall, int maxPortafogli){
+        try {
+            verifyInputs(duration, intervall, maxPortafogli);
+            Portafoglio portafoglio = new Portafoglio(risk, intervall, maxPortafogli);
+            portafoglio.addTitolo(portafoglio.generateAzione(totalAmount / 2));
+            portafoglio.addTitolo(portafoglio.generateAzione(totalAmount / 2));
+            Clock clock = Clock.getInstance(duration);
+            clock.run(portafoglio);
+            totalAmount = portafoglio.getValue();
+            Printer printer = new Printer();
+            printer.printStructure(portafoglio);
+        }catch (Exception e){
+            System.out.println("Simulazione abortita. " + e.getMessage());
+        }
         return totalAmount;
+    }
+
+    private void verifyInputs(int duration, int intervall, int maxPortafogli) throws Exception{
+        if(duration < 2 || intervall < 1 || maxPortafogli < 1)
+            throw new Exception("I valori minimi accettati sono: duration = 2, intervall = 1, maxPortafogli = 1.");
+        if(intervall > duration)
+            throw new Exception("L'intervallo non può superare la durata della simulazione.");
     }
 }
