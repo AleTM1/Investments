@@ -52,10 +52,7 @@ public class Portafoglio extends Titolo {
 
     public Azione generateAzione(double initValue){
         builder.setStartingValue(initValue);
-        builder.setMonitor(monitorRendimenti);
-        Azione azione = builder.getResult();
-        azione.addObserver(monitorRendimenti);
-        return azione;
+        return builder.getResult();
     }
 
     @Override
@@ -100,7 +97,9 @@ public class Portafoglio extends Titolo {
         Titolo titoloPeggiore = monitorRendimenti.requestAnalisys();
         if (titoloPeggiore instanceof Azione) {
             int index = arrayTitoli.indexOf(titoloPeggiore);
-            arrayTitoli.set(index, generateAzione(titoloPeggiore.getValue()));
+            Azione azione = generateAzione(titoloPeggiore.getValue());
+            azione.addObserver(monitorRendimenti);
+            arrayTitoli.set(index, azione);
             monitorRendimenti.resetVariation(index);
         }else{
             Portafoglio p = (Portafoglio) titoloPeggiore;

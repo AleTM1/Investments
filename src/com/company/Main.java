@@ -5,9 +5,9 @@ public class Main {
     public static void main(String[] args) {
 
         double userAmount = 10000;
-        double profileRisk = 5;
+        double profileRisk = 4;
         int duration = 200;
-        int intervall = 8;
+        int intervall = 10;
         int maxPortafogli = 30;
 
         Patrimonio patrimonio = new Patrimonio(userAmount, profileRisk);

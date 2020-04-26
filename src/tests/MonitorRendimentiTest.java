@@ -16,8 +16,10 @@ class MonitorRendimentiTest {
     void initTest() throws NoSuchFieldException, IllegalAccessException{
         ArrayList<Titolo> titoli = new ArrayList<>();
         MonitorRendimenti monitorRendimenti = new MonitorRendimenti(titoli);
-        Azione a1 = new Azione(4, monitorRendimenti, 1000);
-        Azione a2 = new Azione(3, monitorRendimenti, 800);
+        Azione a1 = new Azione(4, 1000);
+        a1.addObserver(monitorRendimenti);
+        Azione a2 = new Azione(3, 800);
+        a2.addObserver(monitorRendimenti);
         titoli.add(a1);
         titoli.add(a2);
         monitorRendimenti.extendVariationsArray();

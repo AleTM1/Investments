@@ -28,7 +28,8 @@ class AzioneTest {
     }
 
     double[] setUp(double maxVarPer, Observer o, double startValue) throws NoSuchFieldException, IllegalAccessException {
-        Azione azione = new Azione(maxVarPer, o, startValue);
+        Azione azione = new Azione(maxVarPer, startValue);
+        azione.addObserver(o);
         assertEquals(startValue, azione.getValue());
         return setUpClass(azione);
     }
@@ -49,7 +50,8 @@ class AzioneTest {
         ArrayList<Titolo> titoli = new ArrayList<>();
         MonitorRendimenti o = new MonitorRendimenti(titoli);
         double startValue = 1000;
-        Azione azione = new Azione(maxVarPer, o, startValue);
+        Azione azione = new Azione(maxVarPer, startValue);
+        azione.addObserver(o);
         titoli.add(azione);
         o.extendVariationsArray();
         azione.updateValue();
