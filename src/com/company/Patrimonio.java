@@ -45,3 +45,4 @@ public class Patrimonio {
             throw new Exception("L'intervallo non può superare la durata della simulazione.");
     }
 }
+

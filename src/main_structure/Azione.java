@@ -1,7 +1,5 @@
 package main_structure;
 
-import observer_classes.Observer;
-
 public class Azione extends Titolo {
     private double maxIncPer = 0;
     private double maxDecPer = 0;
@@ -29,3 +27,5 @@ public class Azione extends Titolo {
         _notify(this);
     }
 }
+
+
