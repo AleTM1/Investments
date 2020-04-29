@@ -108,7 +108,6 @@ public class Portafoglio extends Titolo {
     }
 
     private void winUpgrade(){
-        // Si creano due nuovi portafogli inizializzati con 2 azioni ciascuno
         double newAzioniValue = this.getValue() / (Math.pow(brenchFactor, 3));
         Portafoglio p;
         this.setValue(this.getValue()/brenchFactor);
@@ -119,7 +118,6 @@ public class Portafoglio extends Titolo {
             }
             this.addTitolo(p);
         }
-        // I valori delle azioni preesistenti vengono adeguati
         for(int i = 0; i<brenchFactor; i++){
             arrayTitoli.get(i).setValue(arrayTitoli.get(i).getValue() / brenchFactor);
         }

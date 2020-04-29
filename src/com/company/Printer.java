@@ -6,11 +6,11 @@ import main_structure.Titolo;
 import java.io.FileWriter;
 import java.io.IOException;
 
-class Printer {
+final class Printer {
 
     private final String path = new String("src/printer_results/structure.txt");
 
-     void printStructure(Portafoglio root) {
+     final void printStructure(Portafoglio root) {
         try {
             FileWriter writer = new FileWriter(path, false);
             propagatePrint(writer, root);
@@ -35,7 +35,4 @@ class Printer {
         }
 
     }
-
 }
-
-

@@ -1,11 +1,9 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.InvocationTargetException;
 
-
-class runAllTest {
+class runAllTests {
 
     @Test
     void runTests() throws NoSuchFieldException, IllegalAccessException, NoSuchMethodException, InvocationTargetException {
@@ -29,3 +27,5 @@ class runAllTest {
         portafoglioTest.initTest();
     }
 }
+
+

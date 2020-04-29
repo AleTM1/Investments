@@ -27,5 +27,3 @@ public class Azione extends Titolo {
         _notify(this);
     }
 }
-
-

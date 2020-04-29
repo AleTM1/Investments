@@ -16,7 +16,3 @@ public class Main {
         System.out.println("Al termine della simulazione il nuovo patrimonio ammonta a: " + userAmount);
     }
 }
-
-
-
-
