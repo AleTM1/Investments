@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Portafoglio extends Titolo {
     private static int intervall;
-    private final int brenchFactor = 2;
+    private final int branchFactor = 2;
     private ArrayList<Titolo> arrayTitoli;
     private MonitorRendimenti monitorRendimenti;
     private int currentTick = 0;
@@ -75,7 +75,7 @@ public class Portafoglio extends Titolo {
                 lossAnalisys();
             }else{
                 System.out.println("Portafoglio: " + id + " in guadagno");
-                if(currentId < maxPortafogli && arrayTitoli.size() == brenchFactor)
+                if(currentId < maxPortafogli && arrayTitoli.size() == branchFactor)
                     winUpgrade();
             }
             initialValue = value;
@@ -108,18 +108,18 @@ public class Portafoglio extends Titolo {
     }
 
     private void winUpgrade(){
-        double newAzioniValue = this.getValue() / (Math.pow(brenchFactor, 3));
+        double newAzioniValue = this.getValue() / (Math.pow(branchFactor, 3));
         Portafoglio p;
-        this.setValue(this.getValue()/brenchFactor);
-        for(int i=0; i<brenchFactor; i++){
+        this.setValue(this.getValue()/ branchFactor);
+        for(int i = 0; i< branchFactor; i++){
             p = new Portafoglio(builder);
-            for(int k=0; k<brenchFactor; k++) {
+            for(int k = 0; k< branchFactor; k++) {
                 p.addTitolo(p.generateAzione(newAzioniValue));
             }
             this.addTitolo(p);
         }
-        for(int i = 0; i<brenchFactor; i++){
-            arrayTitoli.get(i).setValue(arrayTitoli.get(i).getValue() / brenchFactor);
+        for(int i = 0; i< branchFactor; i++){
+            arrayTitoli.get(i).setValue(arrayTitoli.get(i).getValue() / branchFactor);
         }
     }
 }

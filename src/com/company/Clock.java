@@ -2,8 +2,8 @@ package com.company;
 
 import main_structure.Titolo;
 
-public class Clock {
-    private int maxTick;
+final public class Clock {
+    private final int maxTick;
     private static Clock self = null;
 
     private Clock(int mT){
@@ -17,7 +17,7 @@ public class Clock {
             return self;
         }
     }
-    void run(Titolo titolo) {
+    final void run(Titolo titolo) {
         try {
             for (int i = 0; i < maxTick; i++) {
                 Thread.sleep(100);
@@ -29,3 +29,5 @@ public class Clock {
         }
     }
 }
+
+

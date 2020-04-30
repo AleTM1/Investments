@@ -154,3 +154,5 @@ class PortafoglioTest {
         assertEquals(a2, titoli.get(1));
     }
 }
+
+

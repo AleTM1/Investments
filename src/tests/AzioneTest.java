@@ -1,7 +1,6 @@
 package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import main_structure.Azione;
 import main_structure.MonitorRendimenti;
 import main_structure.Titolo;
@@ -45,16 +44,19 @@ class AzioneTest {
     }
 
     @Test
-    void testUpdateValue(){
+    void testUpdateValue()throws NoSuchFieldException, IllegalAccessException{
         double maxVarPer = 3;
         ArrayList<Titolo> titoli = new ArrayList<>();
         MonitorRendimenti o = new MonitorRendimenti(titoli);
         double startValue = 1000;
         Azione azione = new Azione(maxVarPer, startValue);
+        double[] results = setUpClass(azione);
         azione.addObserver(o);
         titoli.add(azione);
         o.extendVariationsArray();
         azione.updateValue();
-        assertTrue(azione.getValue() <= 1030 && azione.getValue() >= 970);
+        assertTrue(azione.getValue() <= 1000 * (1 + results[0]/100) && azione.getValue() >= 1000 * (1 - results[1]/100));
     }
 }
+
+

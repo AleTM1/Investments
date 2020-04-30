@@ -1,5 +1,5 @@
-portafoglio 0 dal valore di 1063.9384092506646 contiene{ - portafoglio 1 - portafoglio 2 }
-portafoglio 1 dal valore di 289.7623194181728 contiene{ - portafoglio 3 - portafoglio 4 }
-portafoglio 3 dal valore di 77.04884803441527 contiene{ }
-portafoglio 4 dal valore di 66.18292419588678 contiene{ }
-portafoglio 2 dal valore di 276.461308273436 contiene{ }
+portafoglio 0 dal valore di 1510.7812821880102 contiene{ - portafoglio 1 - portafoglio 2 }
+portafoglio 1 dal valore di 356.7861359662217 contiene{ - portafoglio 3 - portafoglio 4 }
+portafoglio 3 dal valore di 91.92523936969562 contiene{ }
+portafoglio 4 dal valore di 90.04710144682205 contiene{ }
+portafoglio 2 dal valore di 335.12813654367255 contiene{ }

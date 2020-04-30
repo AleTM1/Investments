@@ -47,3 +47,4 @@ class PatrimonioTest {
         assertEquals(final_amount, amount);
     }
 }
+
