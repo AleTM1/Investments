@@ -8,7 +8,7 @@ import java.io.IOException;
 
 final class Printer {
 
-    private final String path = new String("src/printer_results/structure.txt");
+    private final String path = "src/printer_results/structure.txt";
 
      final void printStructure(Portafoglio root) {
         try {
